@@ -29,7 +29,7 @@ namespace GuessingGameTemplate4U
             
             int guess = Convert.ToInt16(inputBox.Text);
 
-            //TODO add guess to List of guesses on Form1
+            Form1.guessList.Add(guess);
 
 
             if (guess < rand)
@@ -45,9 +45,12 @@ namespace GuessingGameTemplate4U
                 outputLabel.Text = "You Got it!";
                 Refresh();
                 Thread.Sleep(1000);
+         
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
 
-                //TODO close this screen and open a Results Screen (you need to create this)
-
+                resultsScreen rs = new resultsScreen();
+                f.Controls.Add(rs);
             }
 
             inputBox.Text = "";
